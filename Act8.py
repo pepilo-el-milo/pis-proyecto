@@ -74,7 +74,10 @@ hashtable = HashTable(word_dict.items())
 #     else:
 #         print(f"Palabra:    , Archivos: 0, Posting: -1")
 
-with open("Logs/a8/a8_dicc.txt", 'w') as f:
+file_path = "Logs/act8/"
+os.makedirs(os.path.dirname(file_path), exist_ok=True)
+
+with open(os.path.join(file_path,"a8_dicc.txt"), 'w') as f:
     f.write("Act8\nPalabra--#Archivos--Posting\n")
     for bucket in hashtable.buckets:
         if bucket:
@@ -87,7 +90,7 @@ with open("Logs/a8/a8_dicc.txt", 'w') as f:
         else:
             f.write(f"[Empty Bucket]--[0]--[-1]\n")
 
-with open("Logs/a8/a8_posting.txt", 'w') as f:
+with open(os.path.join(file_path,"a8_posting.txt"), 'w') as f:
     f.write("Act8\nArchivo--Frecuencia\n")
     for w, pVal in word_dict.items():
         for doc, frec in pVal['archivos'].items():
@@ -116,7 +119,7 @@ with open("Logs/a8/a8_posting.txt", 'w') as f:
 
 exec_time = time.time() - start_time
 
-with open('Logs/a8/a8_matricula.txt', 'w') as f:
+with open(os.path.join(file_path,"a8_matricula.txt"), 'w') as f:
     f.write("Act8\n")
     for i in range(len(directory)):
         f.write(f"{directory[i]}    {str(round(end_times[i], 2))} \n")

@@ -71,7 +71,10 @@ hashtable = HashTable(word_dict.items())
 txt_files = [f for f in os.listdir(folder_path) if f.endswith(".txt")]
 doc_dict = {i: txt_files[i] for i in range(len(txt_files))}
 
-with open("Logs/a11/a11_documents.txt", "w") as f:
+file_path = "Logs/act11/"
+os.makedirs(os.path.dirname(file_path), exist_ok=True)
+
+with open(os.path.join(file_path, "a11_documents.txt"), "w") as f:
     f.write("Act11\nID\tArchivo\n")
     for key, value in doc_dict.items():
         f.write(str(key) + "\t" + value + "\n")
@@ -89,7 +92,7 @@ with open("Logs/a11/a11_documents.txt", "w") as f:
 #         else:
 #             f.write(f"[0]--[-1]\n")
 
-with open("Logs/a11/a11_posting.txt", 'w') as f:
+with open(os.path.join(file_path, "a11_posting.txt"), 'w') as f:
     f.write("Act11\nArchivo--Peso\n")
     for bucket in hashtable.buckets:
         if bucket:
@@ -106,7 +109,7 @@ with open("Logs/a11/a11_posting.txt", 'w') as f:
         else:
             f.write(f"[0]--[-1]\n")
 
-with open("Logs/a11/a11_dicc.txt", 'w') as f:
+with open(os.path.join(file_path, "a11_dicc.txt"), 'w') as f:
     f.write("Act11\nPalabra--#Archivos--Posting\n")
     for bucket in hashtable.buckets:
         if bucket:
@@ -121,7 +124,7 @@ with open("Logs/a11/a11_dicc.txt", 'w') as f:
 
 exec_time = time.time() - start_time
 
-with open('Logs/a11/a11_matricula.txt', 'w') as f:
+with open(os.path.join(file_path, "a11_matricula.txt"), 'w') as f:
     f.write("Act11\n")
     for i in range(len(directory)):
         f.write(f"{directory[i]}    {str(round(end_times[i], 2))} \n")

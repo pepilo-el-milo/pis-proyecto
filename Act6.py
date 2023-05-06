@@ -28,7 +28,10 @@ for filename in directory:
     end_times.append(e_time - s_time)
     file_time += (e_time - s_time)
 
-with open("./Logs/a6_result.txt", 'w') as f:
+file_path = "Logs/act6/"
+os.makedirs(os.path.dirname(file_path), exist_ok=True)
+
+with open(os.path.join(file_path, "a6_results.txt"), 'w') as f:
     f.write("Act6\nPalabra--Repeticiones--#Archivos\n")
     for w in word_dict:
         repeticiones = word_dict[w]["repeticiones"]
@@ -37,7 +40,7 @@ with open("./Logs/a6_result.txt", 'w') as f:
 
 exec_time = time.time() - start_time
 
-with open('./Logs/a6_matricula.txt', 'w') as f:
+with open(os.path.join(file_path, "a6_matricula.txt"), 'w') as f:
     f.write("Act 6\n")
     for i in range(len(directory)):
         f.write(f"{directory[i]}    {str(round(end_times[i], 2))} \n")

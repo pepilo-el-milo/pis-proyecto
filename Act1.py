@@ -22,8 +22,8 @@ end_time = time.time()
 final_time = end_time - start_time
 
 
-file_path = "Logs/a1_matricula.txt"
-
+file_path = "Logs/act1/a1_matricula.txt"
+os.makedirs(os.path.dirname(file_path), exist_ok=True)
 
 totalTimes = "\nTiempo total en abrir los archivos:  " + str(segundosTotales) + " segundos \nTiempo total de ejecución: " + str(final_time) + " segundos"
 

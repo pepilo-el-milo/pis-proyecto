@@ -34,11 +34,14 @@ for filename in directory:
 
 exec_time = time.time() - start_time
 
-with open('Logs/a12/a12_results.txt', 'w') as file:
+file_path = "Logs/act12/"
+os.makedirs(os.path.dirname(file_path), exist_ok=True)
+
+with open(os.path.join(file_path, "a12_results.txt"), 'w') as file:
     for index, result in enumerate(results):
         file.write(f'{index+1}. {result}\n')
 
-with open('Logs/a12/a12_matricula.txt', 'w') as f:
+with open(os.path.join(file_path, "a12_matricula.txt"), 'w') as f:
     f.write("Act12\n")
     for i in range(len(directory)):
         f.write(f"{directory[i]}    {str(round(end_times[i], 2))} \n")

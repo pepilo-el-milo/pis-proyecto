@@ -46,7 +46,10 @@ for filename in files:
 
 exec_time = time.time() - start_time
 
-with open('./Logs/a5_matricula.txt', 'w') as f:
+file_path = "Logs/act5/a5_matricula.txt"
+os.makedirs(os.path.dirname(file_path), exist_ok=True)
+
+with open(file_path, 'w') as f:
     f.write("Act 5\n")
     for i in range(len(files)):
         f.write(f"{files[i]}    {str(round(end_times[i], 2))} \n")

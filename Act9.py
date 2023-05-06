@@ -47,14 +47,17 @@ for key, value in word_dict.items():
     value['posting'] = contPost
     contPost += len(value['archivos'])
 
-with open("Logs/a9/a9_dicc.txt", 'w') as f:
+file_path = "Logs/act9/"
+os.makedirs(os.path.dirname(file_path), exist_ok=True)
+
+with open(os.path.join(file_path,"a9_dicc.txt"), 'w') as f:
     f.write("Act9\nPalabra--#Archivos--Posting\n")
     for w in word_dict:
         archivos = len(word_dict[w]["archivos"])
         posting = word_dict[w]["posting"]
         f.write(f"{w}--{archivos}--{posting}\n")
 
-with open("Logs/a9/a9_posting.txt", 'w') as f:
+with open(os.path.join(file_path,"a9_posting.txt"), 'w') as f:
     f.write("Act9\nArchivo--Frecuencia\n")
     for w, pVal in word_dict.items():
         for doc, frec in pVal['archivos'].items():
@@ -68,7 +71,7 @@ with open("Logs/a9/a9_posting.txt", 'w') as f:
 
 exec_time = time.time() - start_time
 
-with open('Logs/a9/a9_matricula.txt', 'w') as f:
+with open(os.path.join(file_path,"a9_matricula.txt"), 'w') as f:
     f.write("Act9\n")
     for i in range(len(directory)):
         f.write(f"{directory[i]}    {str(round(end_times[i], 2))} \n")

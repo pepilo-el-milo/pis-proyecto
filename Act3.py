@@ -39,7 +39,10 @@ totalTimes = "\nTiempo total en crear el nuevo archivo: " + \
     str(segundosTotales) + " segundos \nTiempo total de ejecución: " + \
     str(final_time) + " segundos"
 
-with open("./Logs/a3_matricula.txt", "w") as file:
+file_path = "Logs/act3/a3_matricula.txt"
+os.makedirs(os.path.dirname(file_path), exist_ok=True)
+
+with open(file_path, "w") as file:
     file.write("newfile\n")
     for x in times:
         file.write(x + "\n")

@@ -25,13 +25,16 @@ for filename in files:
 
 wordArray.sort()
 
-with open('./Logs/a4_results.txt', 'w') as f:
+file_path = "Logs/act4/"
+os.makedirs(os.path.dirname(file_path), exist_ok=True)
+
+with open(os.path.join(file_path, "a4_results.txt"), 'w') as f:
     for word in wordArray:
         f.write(word + '\n')
 
 final_time = time.time() - start_time
 
-with open("./Logs/a4_matricula.txt", "w") as f:
+with open(os.path.join(file_path, "a4_matricula.txt"), "w") as f:
     f.write("Act 4\n")
     for x in times:
         f.write(x + "\n")

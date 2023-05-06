@@ -39,7 +39,10 @@ for filename in directory:
 
 exec_time = time.time() - start_time
 
-with open('Logs/a13/a13_results.txt', 'w') as file:
+file_path = "Logs/act13/"
+os.makedirs(os.path.dirname(file_path), exist_ok=True)
+
+with open(os.path.join(file_path, "a13_results.txt"), 'w') as file:
     file.write("Retrieve")
     for w in words:
         file.write(f" {w} ")
@@ -49,7 +52,7 @@ with open('Logs/a13/a13_results.txt', 'w') as file:
             break
         file.write(f'{index+1}. {result}\n')
 
-with open('Logs/a13/a13_matricula.txt', 'w') as f:
+with open(os.path.join(file_path, "a13_matricula.txt"), 'w') as f:
     f.write("Act13\n")
     for i in range(len(directory)):
         f.write(f"{directory[i]}    {str(round(end_times[i], 2))} \n")

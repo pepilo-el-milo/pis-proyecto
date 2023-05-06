@@ -36,7 +36,10 @@ final_time = time.time() - start_time
 ## print("Tiempo total en abrir los archivos:  " + str(round(segundosTotales, 2)) + " segundos")
 ## print("Tiempo total de ejecución: " + str(round(final_time, 2)) + " segundos")
 
-with open("Logs/a2_matricula.txt", "w") as f:
+file_path = "Logs/act2/a2_matricula.tx"
+os.makedirs(os.path.dirname(file_path), exist_ok=True)
+
+with open(file_path, "w") as f:
     f.write("Act 2\n")
     for x in times:
         f.write(x + "\n")
